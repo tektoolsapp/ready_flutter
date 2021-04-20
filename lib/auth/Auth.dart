@@ -191,7 +191,7 @@ class Auth extends ChangeNotifier {
       
       print("UPDATE DATA: $data");
       
-      Dio.Response response = await dio().put(
+      Dio.Response response = await dio().post(
         'booking/update',
         data: json.encode(data)
       );

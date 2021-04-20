@@ -7,16 +7,16 @@ import 'package:flutter_ready_prod/components/WebserviceFail.dart';
 import 'package:flutter_ready_prod/models/Shift.dart';
 //import 'package:flutter_ready_prod/webservice/Webservice.dart';
 
-class ShiftsScreen extends StatelessWidget {
+class TravelDocsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
     return Scaffold (
         appBar: AppBar(
-          title: Text('Current Swings')
+          title: Text('Travel Docs for Swing')
         ),
-        drawer: AppDrawer().build(context),
-        bottomNavigationBar: BottomNav(),
+        //drawer: AppDrawer().build(context),
+        //bottomNavigationBar: BottomNav(),
         body: FutureBuilder(
           //future: Webservice().load(Shift.all),
           //asyncFunc()

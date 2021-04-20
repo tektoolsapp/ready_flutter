@@ -27,11 +27,11 @@ class HomeScreenState extends State<HomeScreen> {
         child: Column(
           children: <Widget>[
             Center(
-              child: Text("_homeScreenText"),
+              child: Text(""),
             ),
             Row(children: <Widget>[
               Expanded(
-                child: Text("_messageText"),
+                child: Text(""),
               ),
             ])
           ],),

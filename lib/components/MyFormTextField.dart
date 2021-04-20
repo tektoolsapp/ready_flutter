@@ -6,13 +6,16 @@ class MyFormTextField extends StatelessWidget {
   Function(String) validator;
   final bool isObscure;
   final initVal;
+  final bool enabled;
 
   MyFormTextField(
       {this.isObscure, 
       this.initVal,
       this.decoration, 
       this.validator, 
-      this.onSaved});
+      this.onSaved,
+      this.enabled
+      });
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +25,7 @@ class MyFormTextField extends StatelessWidget {
       decoration: decoration,
       validator: validator,
       onSaved: onSaved,
+      enabled: enabled,
     );
   }
 }

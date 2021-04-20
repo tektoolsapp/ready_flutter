@@ -58,7 +58,7 @@ class AppDrawer extends StatelessWidget {
                   color: PrimaryColor,
                 ), 
                 child: Text(
-                  "Logged in as: " + auth.user.id.toString(),
+                  "Logged in as: " + auth.user.name.toString(),
                   style: TextStyle(
                     fontWeight: FontWeight.bold, 
                     color : Colors.white
@@ -89,15 +89,15 @@ class AppDrawer extends StatelessWidget {
               onTap: () => _navigate(context, '/logged_in'),
             ),
             ListTile(
-              title: Text("Current Shifts"),
+              title: Text("Current Swings"),
               onTap: () => _navigate(context, '/shifts'),
             ),
-            ListTile(
+            /* ListTile(
               title: Text("Messages"),
               onTap: () => _navigate(context, '/messages'),
-            ),
+            ), */
             ListTile(
-              title: Text("Old Messages"),
+              title: Text("Messages"),
               onTap: () => _navigate(context, '/old_messages'),
             ),
             ListTile(
@@ -105,14 +105,22 @@ class AppDrawer extends StatelessWidget {
               onTap: () => _navigate(context, '/test'),
             ),
             ListTile(
+              title: Text("Error Handling"),
+              onTap: () => _navigate(context, '/errors'),
+            ),
+            ListTile(
               title: Text("Photos"),
               onTap: () => _navigate(context, '/photos'),
+            ),
+            ListTile(
+              title: Text("Travel Docs"),
+              onTap: () => _navigate(context, '/travelDocs'),
             ),
             ListTile(
               title: Text("View PDF"),
               onTap: () => _navigate(context, '/viewPdf'),
             ),
-            ListTile(
+            /* ListTile(
               title: Text("Contacts"),
               onTap: () => _navigate(context, '/contacts'),
             ),
@@ -123,7 +131,7 @@ class AppDrawer extends StatelessWidget {
             ListTile(
               title: Text("Artices"),
               onTap: () => _navigate(context, '/news_articles'),
-            ),
+            ), */
           ] 
       );
     }

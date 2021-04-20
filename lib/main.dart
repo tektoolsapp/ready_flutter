@@ -5,14 +5,19 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ready_prod/models/Message.dart';
 import 'package:flutter_ready_prod/Message2.dart';
+import 'package:flutter_ready_prod/models/Shift2.dart';
 import 'package:flutter_ready_prod/models/Todo.dart';
 import 'package:flutter_ready_prod/models/messageCounter.dart';
 import 'package:flutter_ready_prod/routes.dart';
 import 'package:flutter_ready_prod/screens/DetailScreen.dart';
 import 'package:flutter_ready_prod/screens/MessagesScreen.dart';
 import 'package:flutter_ready_prod/screens/MessagesScreen2.dart';
+import 'package:flutter_ready_prod/screens/NavigationService.dart';
 import 'package:flutter_ready_prod/screens/ShiftDetailsMessageScreen.dart';
+import 'package:flutter_ready_prod/screens/route_navigation.dart';
+import 'package:flutter_ready_prod/screens/verification_change_notifier.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+//import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
 import 'auth/Auth.dart';
 import 'models/Test.dart';
@@ -55,9 +60,11 @@ Future main() async {
       providers: [
         ChangeNotifierProvider<Auth>(create: (context) => Auth()),
         ChangeNotifierProvider<Test>(create: (context) => Test()),
+        ChangeNotifierProvider<Shift2>(create: (context) => Shift2()),
         ChangeNotifierProvider<Message>(create: (context) => Message()),
         ChangeNotifierProvider<Message2>(create: (context) => Message2()),
         ChangeNotifierProvider<MessageCounter>(create: (context) => MessageCounter()),
+        ChangeNotifierProvider<VerificationChangeNotifier>(create: (context) => VerificationChangeNotifier()),
         //ChangeNotifierProvider<Contact>(create: (context) => Contact()),
       ],
       child: MyApp(),
@@ -85,9 +92,12 @@ class MyApp extends StatefulWidget {
 
 class MyAppState extends State<MyApp>{
 
-  final GlobalKey<NavigatorState> navigatorKey = GlobalKey(debugLabel: "Main Navigator");
+  //final GlobalKey<NavigatorState> navigatorKey = GlobalKey(debugLabel: "Main Navigator");
+  final navigatorKey = NavKey.navKey;
   
   final storage = new FlutterSecureStorage();
+
+  //final locator = GetIt.instance;
 
   String _homeScreenText = "Waiting for token...";
   String _messageText = "Waiting for message...";
@@ -228,10 +238,14 @@ class MyAppState extends State<MyApp>{
 
   }
 
+  /* void setupLocator() {
+    locator.registerLazySingleton(() => NavigationService());
+  } */
+
   Widget build(BuildContext context) {
       
     return MaterialApp(
-      navigatorKey: navigatorKey,
+      navigatorKey: NavKey.navKey,
       title: 'Flutter Ready',
       /* theme: ThemeData(
         primaryColor: PrimaryColor,
@@ -251,6 +265,9 @@ class MyAppState extends State<MyApp>{
           focusColor: Colors.black,
           labelStyle: TextStyle(
             color: Colors.black54,
+          ),
+          disabledBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: Colors.grey, width: 0.0),
           ),
           enabledBorder: OutlineInputBorder(
             borderSide: const BorderSide(color: Colors.grey, width: 0.0),

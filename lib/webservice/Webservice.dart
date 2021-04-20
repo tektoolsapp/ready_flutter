@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'Resource.dart';
@@ -14,6 +16,10 @@ class Webservice {
     var token = await storage.read(key: 'token');
 
     //print("TOKEN: $token");
+    
+    final getUrl = apiUrl + resource.url;
+    
+    print("GET $getUrl");
     
     final response = await http.get(apiUrl + resource.url, headers: {
     
